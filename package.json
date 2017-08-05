@@ -1,8 +1,13 @@
 {
   "name": "eDiskReport",
+  "license": "SEE LICENSE IN README.md",
   "version": "0.0.1",
-  "main": "main.js",
+  "main": "src/app.js",
   "devDependencies": {
     "electron": "^1.6.11"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/electron .",
+    "build": "echo TODO"
   }
 }
