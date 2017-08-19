@@ -18,14 +18,24 @@ $ sudo port install yarn  # Also installs Node.
 
 ## Development
 
+First run:
+
 ```shell
 $ git clone git@github.com:beporter/ediskreport.git
 $ cd ediskreport/
 $ yarn install
-# (edit code)
-$ ./node_modules/.bin/electron .
 ```
 
+Active development:
+
+```shell
+$ yarn start  # (Will launch the electron app locally.)
+
+# In a separate terminal window:
+$ yarn run watch  # (Will watch for file saves and rebuild the app automatically.)
+```
+
+Once both are running, edit and save code, then <kbd>Cmd-R</kbd> to reload the app in the Electron window.
 
 
 ## References
