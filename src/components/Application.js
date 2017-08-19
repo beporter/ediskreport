@@ -15,6 +15,8 @@ export default class Application extends Component {
                   <h2>An Electron replacement for jDiskReport</h2>
                 </header>
 
+                <button id="openFile">Scan path</button>
+
                 <label for="scanPath">Scan path: </label>
                 <input id="scanPath" type="file" /* style="width:0px;" */ webkitdirectory directory />
                 <p>Quick select:</p>

@@ -67,6 +67,9 @@ Need to decide how to take `ls` results and turn it into structured data.
 * [directory-tree](https://www.npmjs.com/package/directory-tree) MIT
 * [complete-directory-tree](https://www.npmjs.com/package/complete-directory-tree) MIT
 * [Resizing flexbox](https://gist.github.com/randompast/e3d2fc4319a35858918f)
+* [Selecting a dir in Electron](https://jaketrent.com/post/select-directory-in-electron/)
+* [Opening native dialogs in electron](http://mylifeforthecode.com/getting-started-with-standard-dialogs-in-electron/)
+* [More system dialogs](https://www.tutorialspoint.com/electron/electron_system_dialogs.htm)
 
 
 ### Sample Apps
