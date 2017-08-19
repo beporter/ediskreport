@@ -18,12 +18,15 @@ module.exports = {
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        presets: [ ['es2015', {modules: false}], 'es2015' ],
-                        plugins: [ require('babel-plugin-transform-object-rest-spread') ],
+                        presets: [ ['es2015', {modules: false}], 'es2017', 'react' ],
+                        plugins: [
+                            require('babel-plugin-transform-object-rest-spread'),
+                            ['transform-react-jsx', { 'pragma': 'h' }]
+                        ],
                     },
                 }],
             },
         ],
     },
-    devtool: '#source-map',
+    devtool: '#inline-source-map',
 }

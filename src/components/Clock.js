@@ -1,6 +1,6 @@
 import { h, render, Component } from 'preact';
 
-class Clock extends Component {
+export class Clock extends Component {
     constructor() {
         super();
         this.state.time = Date.now();
