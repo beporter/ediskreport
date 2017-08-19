@@ -66,6 +66,7 @@ Need to decide how to take `ls` results and turn it into structured data.
 * [node-dir](https://www.npmjs.com/package/node-dir) MIT
 * [directory-tree](https://www.npmjs.com/package/directory-tree) MIT
 * [complete-directory-tree](https://www.npmjs.com/package/complete-directory-tree) MIT
+* [Resizing flexbox](https://gist.github.com/randompast/e3d2fc4319a35858918f)
 
 
 ### Sample Apps
