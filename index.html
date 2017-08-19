@@ -2,21 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>eDiskReport</title>
 
     <link rel="stylesheet" href="./assets/styles.css">
   </head>
+
   <body class="container-fluid">
-    <h1>eDiskReport</h1>
-    <p>We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.</p>
-
-    <p><script>document.write(/*scanner.doLs()*/)</script></p>
-
-    <div class="container-fluid">
-      <canvas class="chart"></canvas>
-    </div>
-
+    <div id="main"></div>
+    <script type="text/javascript" src="./dist/app.bundle.js"></script>
   </body>
 </html>
