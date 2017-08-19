@@ -16,6 +16,10 @@ body {
 }
 
 .container {
+  height: 100%;
+}
+
+.flex-container {
   display: flex;
   height: 100%;
 }

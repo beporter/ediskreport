@@ -3,7 +3,8 @@ import { Clock } from './Clock';
 
 export default class Application extends Component {
     render() {
-        return this.renderDirDisplay();
+        return this.renderPathSelect();
+        //return this.renderDirDisplay();
     }
 
     // temporary static version of the initial "select a file tree" screen.
@@ -28,7 +29,7 @@ export default class Application extends Component {
     // temporary static version of an individual directory display
     renderDirDisplay() {
         return (
-            <div class="container chart-display">
+            <div class="flex-container chart-display">
                 <nav class="nav-containter">
                     nested file listing nav
                 </nav>
