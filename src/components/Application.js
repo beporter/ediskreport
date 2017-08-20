@@ -38,7 +38,7 @@ export default class Application extends Component {
                 </nav>
 
                 <div class="chart-container">
-                    <div>pie chat for current dir</div>
+                    <div>pie chart for current dir</div>
                     {/* <canvas class="chart"></canvas> */}
                     <Scanner path="/tmp" />
                 </div>
