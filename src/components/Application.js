@@ -1,13 +1,10 @@
 import { h, render, Component } from 'preact';
 import { Clock } from './Clock';
 import { Scanner } from './Scanner';
+import Browser from './Browser';
+import Display from './Display';
 
 export default class Application extends Component {
-    render() {
-        //return this.renderPathSelect();
-        return this.renderDirDisplay();
-    }
-
     // temporary static version of the initial "select a file tree" screen.
     renderPathSelect() {
         return (
@@ -29,20 +26,11 @@ export default class Application extends Component {
         );
     }
 
-    // temporary static version of an individual directory display
-    renderDirDisplay() {
+    render(props, state, context) {
         return (
             <div class="flex-container chart-display">
-                <nav class="nav-containter">
-                    nested file listing nav
-                </nav>
-
-                <div class="chart-container">
-                    <div>pie chart for current dir</div>
-                    {/* <canvas class="chart"></canvas> */}
-                    <Scanner path="/tmp" />
-                </div>
-
+                <Browser /> {/* File browser tree */}
+                <Display /> {/* Pie chart display */}
             </div>
         );
     }
