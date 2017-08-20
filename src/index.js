@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, dialog} = require('electron')
+const {app, BrowserWindow, ipcMain, dialog, globalShortcut, Menu } = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -33,10 +33,49 @@ function createWindow () {
   })
 }
 
+function onOpenFileDialog (event, arg) {
+    dialog.showOpenDialog(win, {
+        properties: ['openDirectory']
+    }, (paths) => {
+        return scanTree(paths[0]);
+    });
+}
+
+function scanTree(path) {
+    console.log('got call to scan ' + path);
+    app.addRecentDocument(path);
+}
+
+
+
+
+
+
+const dockMenu = Menu.buildFromTemplate([
+  {label: 'Scan tree...', click () { onOpenFileDialog(); }},
+]);
+app.dock.setMenu(dockMenu);
+app.dock.setIcon('assets/icon.png');
+//app.setUserTasks([]);
+
+app.setAboutPanelOptions({
+    applicationName: 'eDiskReport',
+    applicationVersion: '0.0.1',
+    copyright: '(c) Copyright 2017 Brian Porter',
+    credits: 'Electron, Node, React, Redux, etc.',
+    version: '0.0.1',
+});
+
+
+// === Register Main Thread Event Handlers
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', () => {
+    createWindow();
+    globalShortcut.register('CommandOrControl+O', onOpenFileDialog);
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -45,7 +84,7 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
-})
+});
 
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
@@ -53,15 +92,12 @@ app.on('activate', () => {
   if (win === null) {
     createWindow()
   }
-})
+});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-ipcMain.on('openFile', (event, arg) => {
-  dialog.showOpenDialog(win, {
-    properties: ['openDirectory']
-  }, (paths) => {
-    console.log(paths); //@todo: register a callback method here instead to do something with the array of path returned.
-  });
-})
+ipcMain.on('openFile', onOpenFileDialog);
+app.on('open-file', (event, arg) => {
+    scanTree(arg);
+});
