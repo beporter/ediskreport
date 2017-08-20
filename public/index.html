@@ -13,12 +13,15 @@
 
     <script type="text/javascript" src="../dist/app.bundle.js"></script>
     <script type="text/javascript">
-        const {ipcRenderer} = require('electron')
-        document.getElementById('openFile').addEventListener('click', function() {
-            ipcRenderer.send('openFile', () => {
-                console.log("Event sent.");
-            })
-        })
+        const {ipcRenderer} = require('electron');
+        var openFileButton = document.getElementById('openFile');
+        if (openFileButton) {
+            openFileButton.addEventListener('click', function() {
+                ipcRenderer.send('openFile', () => {
+                    console.log("Event sent.");
+                });
+            });
+        }
     </script>
   </body>
 </html>

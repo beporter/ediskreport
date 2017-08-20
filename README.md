@@ -71,6 +71,8 @@ Need to decide how to take `ls` results and turn it into structured data.
 * [Opening native dialogs in electron](http://mylifeforthecode.com/getting-started-with-standard-dialogs-in-electron/)
 * [More system dialogs](https://www.tutorialspoint.com/electron/electron_system_dialogs.htm)
 
+* [Sync redux store between main and renderer processes in Electron](https://github.com/hardchor/electron-redux). Good graph to understand conceptually, but looks to require double the memory for duplicated stores in each thread. Supposedly we have access to node api's in the renderer threads. (can't figure out how to import them though) so maybe we can do _everything_ in the renderer?
+* [More Electron + Redux](https://github.com/Shishamou/redux-electron)
 
 ### Sample Apps
 

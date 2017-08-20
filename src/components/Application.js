@@ -1,10 +1,11 @@
 import { h, render, Component } from 'preact';
 import { Clock } from './Clock';
+import { Scanner } from './Scanner';
 
 export default class Application extends Component {
     render() {
-        return this.renderPathSelect();
-        //return this.renderDirDisplay();
+        //return this.renderPathSelect();
+        return this.renderDirDisplay();
     }
 
     // temporary static version of the initial "select a file tree" screen.
@@ -38,7 +39,8 @@ export default class Application extends Component {
 
                 <div class="chart-container">
                     <div>pie chat for current dir</div>
-                    <canvas class="chart"></canvas>
+                    {/* <canvas class="chart"></canvas> */}
+                    <Scanner path="/tmp" />
                 </div>
 
             </div>
