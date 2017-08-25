@@ -37,7 +37,9 @@ function onOpenFileDialog (event, arg) {
     dialog.showOpenDialog(win, {
         properties: ['openDirectory']
     }, (paths) => {
-        return scanTree(paths[0]);
+        if (paths && paths.length > 0) {
+            return scanTree(paths[0]);
+        }
     });
 }
 
@@ -47,23 +49,128 @@ function scanTree(path) {
 }
 
 
+// === Set up menus and app meta data. @TODO: Move this out to its own file and require() it in.
+
+const template = [
+  {
+    label: 'File',
+    submenu: [
+      {
+        label: 'Open Path...',
+        accelerator: 'CommandOrControl+O',
+        click () { onOpenFileDialog(); },
+      },
+    ],
+  },
+  /*
+  {
+    label: 'Edit',
+    submenu: [
+      {role: 'undo'},
+      {role: 'redo'},
+      {type: 'separator'},
+      {role: 'cut'},
+      {role: 'copy'},
+      {role: 'paste'},
+      {role: 'pasteandmatchstyle'},
+      {role: 'delete'},
+      {role: 'selectall'}
+    ]
+  },
+  {
+    label: 'View',
+    submenu: [
+      {role: 'reload'},
+      {role: 'forcereload'},
+      {role: 'toggledevtools'},
+      {type: 'separator'},
+      {role: 'resetzoom'},
+      {role: 'zoomin'},
+      {role: 'zoomout'},
+      {type: 'separator'},
+      {role: 'togglefullscreen'}
+    ]
+  },
+  */
+  {
+    role: 'window',
+    submenu: [
+      {role: 'minimize'},
+      {role: 'close'}
+    ]
+  },
+  {
+    role: 'help',
+    submenu: [
+      {
+        label: 'Learn More',
+        click () { require('electron').shell.openExternal('https://github.com/beporter/ediskreport') }
+      }
+    ]
+  }
+];
+
+if (process.platform === 'darwin') {
+  template.unshift({
+    label: 'Electron', //app.getName(),
+    submenu: [
+      {role: 'about'},
+      {type: 'separator'},
+      {role: 'services', submenu: []},
+      {type: 'separator'},
+      {role: 'hide'},
+      {role: 'hideothers'},
+      {role: 'unhide'},
+      {type: 'separator'},
+      {role: 'quit'}
+    ]
+  });
+
+  // Edit menu
+/*
+  template[2].submenu.push(
+    {type: 'separator'},
+    {
+      label: 'Speech',
+      submenu: [
+        {role: 'startspeaking'},
+        {role: 'stopspeaking'}
+      ]
+    }
+  );
+*/
+
+  // Window menu
+  template[2].submenu = [
+    {role: 'close'},
+    {role: 'minimize'},
+    {role: 'zoom'},
+    {type: 'separator'},
+    {role: 'front'}
+  ];
+}
+
+const menu = Menu.buildFromTemplate(template);
 
 
 
 
-const dockMenu = Menu.buildFromTemplate([
-  {label: 'Scan tree...', click () { onOpenFileDialog(); }},
-]);
-app.dock.setMenu(dockMenu);
-app.dock.setIcon('assets/icon.png');
-//app.setUserTasks([]);
+
+
+
+// const dockMenu = Menu.buildFromTemplate([
+//   {label: 'Scan...', click () { onOpenFileDialog(); }},
+// ]);
+// app.dock.setMenu(dockMenu);
+// app.dock.setIcon('assets/icon.png');
+// app.setUserTasks([]);
 
 app.setAboutPanelOptions({
     applicationName: 'eDiskReport',
     applicationVersion: '0.0.1',
-    copyright: '(c) Copyright 2017 Brian Porter',
-    credits: 'Electron, Node, React, Redux, etc.',
-    version: '0.0.1',
+    copyright: '© Copyright 2017 Brian Porter',
+    credits: 'Electron, Node, Preact, Redux, etc.',
+    version: '1',
 });
 
 
@@ -74,7 +181,7 @@ app.setAboutPanelOptions({
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
     createWindow();
-    globalShortcut.register('CommandOrControl+O', onOpenFileDialog);
+    Menu.setApplicationMenu(menu);
 });
 
 // Quit when all windows are closed.
