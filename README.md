@@ -74,9 +74,11 @@ Need to decide how to take `ls` results and turn it into structured data.
 
 * [React Desktop](http://reactdesktop.js.org/demo/) skins React to look like macOS or Win10.
 * [Charts.js](http://www.chartjs.org/samples/latest/charts/pie.html) can help you render a pie chart as an HTML5 canvas.
-* [node-dir](https://www.npmjs.com/package/node-dir) MIT
+* ~~[node-dir](https://www.npmjs.com/package/node-dir) MIT~~ (no file sizes)
 * [directory-tree](https://www.npmjs.com/package/directory-tree) MIT
 * [complete-directory-tree](https://www.npmjs.com/package/complete-directory-tree) MIT
+* [get-folder-size](https://www.npmjs.com/package/get-folder-size) MIT
+
 * [Resizing flexbox](https://gist.github.com/randompast/e3d2fc4319a35858918f)
 * [Selecting a dir in Electron](https://jaketrent.com/post/select-directory-in-electron/)
 * [Opening native dialogs in electron](http://mylifeforthecode.com/getting-started-with-standard-dialogs-in-electron/)
