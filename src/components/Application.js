@@ -1,12 +1,30 @@
 import { h, render, Component } from 'preact';
-import { Clock } from './Clock';
-import { Scanner } from './Scanner';
+import { connect } from 'preact-redux';
+import { scanPath } from '../reducers/browser';
+import Scanner from './Scanner';
 import Browser from './Browser';
 import Display from './Display';
 
-export default class Application extends Component {
+class Application extends Component {
+    componentDidMount() {
+        this.props.scanPath();
+    }
+
+    render({ location, isLoading, errorMessage }) {
+
+        if (! location) {
+            return this.renderPathSelectScreen();
+        } else if (isLoading) {
+            return this.renderLoadingScreen();
+        } else if (errorMessage.length) {
+            return this.renderErrorMessageScreen(errorMessage);
+        } else {
+            return this.renderBrowserAndGraph();
+        }
+    }
+
     // temporary static version of the initial "select a file tree" screen.
-    renderPathSelect() {
+    renderPathSelectScreen() {
         return (
             <div class="container path-select">
                 <header>
@@ -26,7 +44,26 @@ export default class Application extends Component {
         );
     }
 
-    render(props, state, context) {
+    // temporary static "loading" screen.
+    renderLoadingScreen() {
+        return (
+            <div class="container loading">
+                <p>Loading... @TODO: progress bar?</p>
+            </div>
+        );
+    }
+
+    // temporary basic error display.
+    renderErrorMessageScreen(err) {
+        return (
+            <div class="container errorMessage">
+                <p>{err}</p>
+            </div>
+        );
+    }
+
+    // WIP file browser and graph display.
+    renderBrowserAndGraph() {
         return (
             <div class="flex-container chart-display">
                 <Browser /> {/* File browser tree */}
@@ -35,3 +72,12 @@ export default class Application extends Component {
         );
     }
 }
+
+export default connect(
+    state => ({
+        location: state.browser.location,
+        isLoading: state.browser.isLoading,
+        errorMessage: state.browser.errorMessage
+    }),
+    { scanPath }
+)(Application);
