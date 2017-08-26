@@ -4,23 +4,18 @@ import { bindActionCreators } from 'redux';
 import { changeLocation } from '../../reducers/browser';
 //import { Scanner } from "../Scanner';
 
-
-
-
-const Display = (props) => (
+const Display = ({ isLoading, errorMessage, files }) => (
     <div class="chart-container">
-        <button onClick={ () => props.changeLocation("~/Desktop") }>
-            change location
-        </button>
-
-        <div>pie chart for current dir</div>
-        {/* <canvas class="chart"></canvas> */}
-        {/* <Scanner path="/tmp" /> */}
+        <pre>
+            <code>
+                {JSON.stringify(files, null, 2)}
+            </code>
+        </pre>
     </div>
 )
 
 export default connect(
-    state => state,
+    state => ({ files: state.browser.files }),
     { changeLocation }
 )(Display);
 

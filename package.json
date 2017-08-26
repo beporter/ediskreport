@@ -15,6 +15,7 @@
     "electron": "^1.7.5",
     "preact": "^8.2.1",
     "preact-redux": "^2.0.2",
+    "readdir-plus": "^1.0.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
