@@ -52,7 +52,16 @@ Once both are running, edit and save code, then <kbd>Cmd</kbd>+<kbd>R</kbd> to r
 
 Build GUI as if it was a browser app.
 
-Redux for managing global data store, preact for rendering minimal changes based on that store.
+~~Create a node app that has a restful or rpc api, and then build the web app that makes calls to that "server" app.~~
+
+~~Redux for managing global data store, preact for rendering minimal changes based on that store.~~
+
+Try using [Tauri](https://tauri.app/v1/guides/development/development-cycle) to take advantage of a Rust core **bundled with** an html/css/js frontend GUI.
+
+```
+$ cd ediskreport/ediskreport
+$ cargo tauri dev
+```
 
 Need to decide how to take `ls` results and turn it into structured data.
 
@@ -95,4 +104,4 @@ Need to decide how to take `ls` results and turn it into structured data.
 
 ## License
 
-&copy; 2017 Brian Porter. All rights reserved.
+&copy; 2022 Brian Porter. All rights reserved.
