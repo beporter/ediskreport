@@ -1,0 +1,46 @@
+storeNested = {
+	meta: {...},
+	tree: {
+		path: /start/path
+		type: d
+		children: [
+			{
+				path: /start/path/subfolder
+				type: d
+				children: []
+			},
+			{
+				path: /start/path/file.txt
+				type: f
+				bytes: 145687
+			}
+		]
+	}
+}
+
+
+storeFlat = {
+	meta: {...},
+	nodes: {
+		uuid1: {
+			path: /start/path
+			type: d
+			children: [
+				uuid2,
+				uuid3
+			]
+		},
+		uuid2: {
+			path: /start/path/subfolder
+			type: d
+			children: []
+		},
+		uuid3: {
+			path: /start/path/file.txt
+			type: f
+			bytes: 145687
+		}
+	}
+}
+
+

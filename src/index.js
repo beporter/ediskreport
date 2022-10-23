@@ -6,6 +6,10 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
+
+// increase max memory limit. ref: https://github.com/electron/electron/issues/2056#issuecomment-319289792
+app.commandLine.appendSwitch('js-flags', '--max-old-space-size=4096')
+
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({width: 800, height: 600})

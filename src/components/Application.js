@@ -1,15 +1,10 @@
 import { h, render, Component } from 'preact';
 import { connect } from 'preact-redux';
-import { scanPath } from '../reducers/browser';
 import Scanner from './Scanner';
 import Browser from './Browser';
 import Display from './Display';
 
 class Application extends Component {
-    componentDidMount() {
-        this.props.scanPath();
-    }
-
     render({ location, isLoading, errorMessage }) {
 
         if (! location) {
