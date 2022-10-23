@@ -25,5 +25,8 @@
     "start": "./node_modules/.bin/electron .",
     "watch": "./node_modules/.bin/webpack --watch",
     "build": "echo TODO"
+  },
+  "dependencies": {
+    "readdir-plus": "^1.0.0"
   }
 }

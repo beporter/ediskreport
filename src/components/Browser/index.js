@@ -1,12 +1,16 @@
 import { h } from 'preact';
 import { connect } from 'preact-redux';
 
-const Browser = (props) => (
+const Browser = ({ isLoading, errorMessage, files }) => (
     <nav class="nav-container">
-        nested file listing for {props.location}
+        <pre>
+            <code>
+                {JSON.stringify(files, null, 2)}
+            </code>
+        </pre>
     </nav>
 );
 
 export default connect(
-    state => state.browser
+    state => ({ files: state.browser.files })
 )(Browser);
